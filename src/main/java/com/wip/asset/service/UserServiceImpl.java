@@ -42,10 +42,11 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByUsername(username);
 	}
 
-	@Override
+	//TODO Remove this code before final submission
+	/*@Override
 	public Asset findByModelName(String modelName) {
 		return assetRepository.findByModelName(modelName);
-	}
+	}*/
 
 	@Override
 	public void saveEmployee(Employee emp) {
@@ -70,7 +71,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<Asset> getAssets(String asset) {
+		assetRepository.findAll();
 		return assetRepository.findById(asset);
+	}
+
+	@Override
+	public List<Asset> getAllAssets() {
+		return assetRepository.findAll();
 	}
 
 	@Override
