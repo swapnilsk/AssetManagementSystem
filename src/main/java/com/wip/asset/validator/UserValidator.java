@@ -48,6 +48,43 @@ public class UserValidator implements Validator {
 
 	public void validateEmployee(Object o, Errors errors) {
 		Employee emp = (Employee) o;
+		if(emp==null) return;
+
+		String regexAlphaNumeric = "^[a-zA-Z0-9]+$";
+		String regexAlphabetOnly = "^[a-zA-Z]+$";
+		String regexNumericOnly = "^[0-9]+$";
+
+		if (emp.getEmployeeId()==null || emp.getEmployeeId().trim().length()<1)
+			errors.rejectValue("employeeId","EmployeeValidation.employeeId.mandatory");
+		if (errors.getErrorCount()==0 && !isRegexCompatible(regexAlphaNumeric, emp.getEmployeeId()))
+			errors.rejectValue("employeeId","EmployeeValidation.employeeId.alphaNumeric");
+
+		if (errors.getErrorCount()==0 && (emp.getSurname()==null || emp.getSurname().trim().length()<1))
+			errors.rejectValue("surname","EmployeeValidation.surname.mandatory");
+		if (errors.getErrorCount()==0 && !isRegexCompatible(regexAlphabetOnly, emp.getSurname()))
+			errors.rejectValue("surname","EmployeeValidation.surname.alphabetOnly");
+
+		if (errors.getErrorCount()==0 && (emp.getName()==null || emp.getName().trim().length()<1))
+			errors.rejectValue("name","EmployeeValidation.name.mandatory");
+		if (errors.getErrorCount()==0 && !isRegexCompatible(regexAlphabetOnly, emp.getName()))
+			errors.rejectValue("name","EmployeeValidation.name.alphabetOnly");
+
+		if (errors.getErrorCount()==0 && (emp.getMobileNumber()==null || emp.getMobileNumber().trim().length()<1))
+			errors.rejectValue("mobileNumber","EmployeeValidation.mobileNumber.mandatory");
+		if (errors.getErrorCount()==0 && !isRegexCompatible(regexNumericOnly, emp.getMobileNumber()))
+			errors.rejectValue("mobileNumber","EmployeeValidation.mobileNumber.numericOnly");
+		if (errors.getErrorCount()==0 && (emp.getMobileNumber()==null || emp.getMobileNumber().trim().length()!=10))
+			errors.rejectValue("mobileNumber","EmployeeValidation.mobileNumber.invalid");
+
+		if (errors.getErrorCount()==0 && (emp.getLocation()==null || emp.getLocation().trim().length()<1))
+			errors.rejectValue("location","EmployeeValidation.location.mandatory");
+		if (errors.getErrorCount()==0 && !isRegexCompatible(regexAlphabetOnly, emp.getLocation()))
+			errors.rejectValue("location","EmployeeValidation.location.alphabetOnly");
+
+		if (errors.getErrorCount()==0 && (emp.getDesignation()==null || emp.getDesignation().trim().length()<1))
+			errors.rejectValue("designation","EmployeeValidation.designation.mandatory");
+		if (errors.getErrorCount()==0 && !isRegexCompatible(regexAlphabetOnly, emp.getDesignation()))
+			errors.rejectValue("designation","EmployeeValidation.designation.alphabetOnly");
 	}
 
 	public void validateAsset(Object o, Errors errors) {
@@ -69,8 +106,6 @@ public class UserValidator implements Validator {
 			errors.rejectValue("assetId","AssetValidation.assetID.mandatory");
 		if (errors.getErrorCount()==0 && !isRegexCompatible(regexAlphaNumeric, asset.getAssetId()))
 			errors.rejectValue("assetId","AssetValidation.assetID.alphaNumeric");
-
-
 
 		if (errors.getErrorCount()==0 && (asset.getProductName()==null || asset.getProductName().trim().length()<1))
 			errors.rejectValue("productName","AssetValidation.productName.mandatory");

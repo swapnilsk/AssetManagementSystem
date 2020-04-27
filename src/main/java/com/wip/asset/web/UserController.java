@@ -91,7 +91,7 @@ public class UserController {
 	}
 
 	@PostMapping("/addemployee")
-	public String addemployee(@ModelAttribute("userForm") Employee employeeForm, BindingResult bindingResult) {
+	public String addemployee(@ModelAttribute("employeeForm") Employee employeeForm, BindingResult bindingResult) {
 		userValidator.validateEmployee(employeeForm, bindingResult);
 
 		if (bindingResult.hasErrors()) {
