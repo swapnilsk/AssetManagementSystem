@@ -12,9 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -116,7 +115,8 @@ public class UserController {
                 if (op.isPresent()) {
                     list.add(op.get());
                 }
-            } else if (!empID.isEmpty()) {
+            }
+            if (!empID.isEmpty()) {
                 List<Asset> assetList = userService.getEmployeeById(empID);
                 for (Asset asset : assetList) {
                     if (!assetID.equalsIgnoreCase(asset.getAssetId())) {
@@ -126,7 +126,9 @@ public class UserController {
             }
             list.addAll(arrayList);
         }
-
+        if (list.size() == 0) {
+            model.addAttribute("message", "No Records Found");
+        }
         if (model.getAttribute("message") == null)
             model.addAttribute("asset", list);
         return "viewassetlist";
