@@ -11,6 +11,7 @@ public interface UserService {
     void save(User user);
     void saveEmployee(Employee emp);
     User findByUsername(String username);
+	Asset findByModelName(String modelName);
 	List<String> getEmployee();
 	void saveAsset(Asset assetForm);
 	Optional<Asset> getAssets(String assetForm);

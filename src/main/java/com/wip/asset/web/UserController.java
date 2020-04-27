@@ -157,12 +157,6 @@ public class UserController {
 	@PostMapping("/editasset")
 	public String editAssets(@ModelAttribute("editAssetsForm") Asset editassetForm, BindingResult bindingResult) {
 		System.out.println("inside POST /editasset/");
-		/*
-		 * List<String> listEmp = userService.getEmployee();
-		 * model.addAttribute("empList", listEmp); Optional<Asset> op =
-		 * userService.getAssets(assetId); model.addAttribute("editAssetsForm",
-		 * op.get()); return "editasset";
-		 */
 		System.out.println(editassetForm);
 		userService.saveAsset(editassetForm);
 		return "viewassetlist";

@@ -52,6 +52,15 @@ public class UserValidator implements Validator {
 
 	public void validateAsset(Object o, Errors errors) {
 		Asset asset = (Asset) o;
+
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "modelName", "NotEmpty");
+		if (asset.getModelName().length() < 6 || asset.getModelName().length() > 32) {
+			errors.rejectValue("modelName", "Size.userForm.username");
+		}
+		if (userService.findByUsername(asset.getModelName()) != null) {
+			errors.rejectValue("modelName", "Duplicate.userForm.username");
+		}
+
 		String regexAlphaNumeric = "^[a-zA-Z0-9]+$";
 		String regexAlphabetOnly = "^[a-zA-Z]+$";
 		if(asset==null) return;
@@ -60,6 +69,8 @@ public class UserValidator implements Validator {
 			errors.rejectValue("assetId","AssetValidation.assetID.mandatory");
 		if (errors.getErrorCount()==0 && !isRegexCompatible(regexAlphaNumeric, asset.getAssetId()))
 			errors.rejectValue("assetId","AssetValidation.assetID.alphaNumeric");
+
+
 
 		if (errors.getErrorCount()==0 && (asset.getProductName()==null || asset.getProductName().trim().length()<1))
 			errors.rejectValue("productName","AssetValidation.productName.mandatory");
