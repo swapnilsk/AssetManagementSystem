@@ -22,8 +22,18 @@ h2 {text-align: center;}
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <div><h3>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <input type="button" value="Home" onclick="location.href='/welcome'"/>  </h3></div>
-    </c:if>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#"><input type="button" value="Home" onclick="location.href='/welcome'"/></a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Hello ${pageContext.request.userPrincipal.name}</a></li>
+              <li><a href="#"><a onclick="document.forms['logoutForm'].submit()">Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+</c:if>
     
     <h2>Asset Manager Home</h2>  <br>
     

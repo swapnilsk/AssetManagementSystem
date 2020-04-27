@@ -26,19 +26,21 @@
     </c:if>
 
         <form:form name="viewassetlist" action="viewassetlist" method="POST">
-            <h1 class="form-signin-heading" align="center">Search Asset:</h2>     
+            <h2 class="form-signin-heading" align="center">View Asset List:</h2>
             
           
-                <div class="form-group ${status.error ? 'has-error' : ''}" align="center">
-                    <input type="text" name='assetID'  placeholder="Asset ID:" autofocus="true"  class="form-control"></input>
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                <h5>Asset Id:<span class="label label-default"></span></h5>
+                    <input type="text" name='assetID' class="form-control"></input>
                 </div>
            
-                <div class="form-group ${status.error ? 'has-error' : ''}" align="center">
-                    <input type="text" name='empID'  placeholder="Employee ID:" autofocus="true" class="form-control"></input>
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                <h5>Employee Id:<span class="label label-default"></span></h5>
+                    <input type="text" name='empID' class="form-control"></input>
                 </div>
-
-            <button type="submit"  class="btn btn-lg btn-primary btn-block" >Search</button>
-
+            <div class="text-center">
+            <button type="submit"  class="btn btn-lg btn-primary">Search</button>
+            </div>
             <caption><h2>${message}</h2></caption>
 
            <c:if test="${asset.size() > 0}">
