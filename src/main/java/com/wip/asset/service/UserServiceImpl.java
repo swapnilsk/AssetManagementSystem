@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public Asset findByModelName(String modelName) {
+		return assetRepository.findByModelName(modelName);
+	}
+
+	@Override
 	public void saveEmployee(Employee emp) {
 		empRepository.save(emp);
 	}
@@ -51,7 +56,6 @@ public class UserServiceImpl implements UserService {
 	public List<String> getEmployee() {
 		List<Employee> emp = empRepository.findAll();
 		List<String> listEmpId = new ArrayList<>();
-
 		for (Employee empId : emp) {
 			listEmpId.add(empId.getEmployeeId().toString());
 		}

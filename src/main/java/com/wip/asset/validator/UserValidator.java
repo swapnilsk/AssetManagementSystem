@@ -51,6 +51,14 @@ public class UserValidator implements Validator {
 	public void validateAsset(Object o, Errors errors) {
 		Asset asset = (Asset) o;
 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "modelName", "NotEmpty");
+		if (asset.getModelName().length() < 6 || asset.getModelName().length() > 32) {
+			errors.rejectValue("modelName", "Size.userForm.username");
+		}
+		if (userService.findByUsername(asset.getModelName()) != null) {
+			errors.rejectValue("modelName", "Duplicate.userForm.username");
+		}
+
 	}
 
 	public void validateEmployeeIDAndAssetId(String empID, String assetID, Model model) {
