@@ -2,6 +2,7 @@ package com.wip.asset.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -52,4 +53,9 @@ public class UserValidator implements Validator {
 
 	}
 
+	public void validateEmployeeIDAndAssetId(String empID, String assetID, Model model) {
+		if ((empID == null || empID.trim().isEmpty()) && (assetID == null || assetID.trim().isEmpty())) {
+			model.addAttribute("message", "Please enter a valid Employee Id or Asset Id");
+		}
+	}
 }

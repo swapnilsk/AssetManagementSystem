@@ -107,21 +107,42 @@ public class UserController {
 		return "viewassetlist";
 	}
 
-	@PostMapping(value = "/viewassetlist")
-	public String viewAssetDetails(@RequestParam("empID") String empID, @RequestParam("assetID") String assetID,
-			Model model) {
-		if (!assetID.isEmpty() && assetID != null) {
-			Optional<Asset> op = userService.getAssets(assetID);
-
-			List<Asset> list = new ArrayList<>();
-			list.add(op.get());
-			model.addAttribute("asset", list);
-		} else if (!empID.isEmpty() && empID != null) {
-			List<Asset> list = userService.getEmployeeById(empID);
-			model.addAttribute("asset", list);
-		}
-		return "viewassetlist";
-	}
+    @PostMapping(value = "/viewassetlist")
+    public String viewAssetDetails(@RequestParam("empID") String empID, @RequestParam("assetID") String assetID, Model model) {
+        userValidator.validateEmployeeIDAndAssetId(empID, assetID, model);
+        if (model.getAttribute("message") == null) {
+            List<Asset> list = new ArrayList<>();
+            if (!assetID.isEmpty()) {
+                Optional<Asset> op = userService.getAssets(assetID);
+                if (op.isPresent()) {
+                    list.add(op.get());
+                } else {
+                    model.addAttribute("message", "No asset found . Incorrect Asset ID");
+                }
+            }
+            if (!empID.isEmpty() && model.getAttribute("message") == null) {
+                list = new ArrayList<>();
+                List<Asset> assetList = userService.getEmployeeById(empID);
+                if (assetList == null) {
+                    model.addAttribute("message", "No asset found . Incorrect Employee ID");
+                } else if (!assetID.isEmpty() && assetID != null) {
+                    for (Asset asset : assetList) {
+                        if (assetID.equalsIgnoreCase(asset.getAssetId().toString())) {
+                            list.add(asset);
+                        }
+                    }
+                    if (list.size() < 1) {
+                        model.addAttribute("message", "No matching data found for the given Asset ID & Employee Id");
+                    }
+                } else {
+                    list.addAll(assetList);
+                }
+            }
+            if (model.getAttribute("message") == null)
+                model.addAttribute("asset", list);
+        }
+        return "viewassetlist";
+    }
 
 	@GetMapping("/editasset/{assetId}")
 	public String editAssets(@PathVariable(name = "assetId") String assetId, Model model) {

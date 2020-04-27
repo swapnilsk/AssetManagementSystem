@@ -24,7 +24,7 @@
         <div><h3>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <input type="button" value="Home" onclick="location.href='/welcome'"/>  </h3></div>
     </c:if>
 
-        <form:form method="+" modelAttribute="userForm" class="form-signin">
+        <form:form method="POST" modelAttribute="userForm" class="form-signin">
             <h2 class="form-signin-heading">Create your account</h2>
             <spring:bind path="username">
                 <div class="form-group ${status.error ? 'has-error' : ''}">

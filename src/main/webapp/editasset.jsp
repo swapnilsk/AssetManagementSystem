@@ -31,8 +31,7 @@ pageEncoding="ISO-8859-1"%>
     
 
         <form:form method="POST" action="/editasset" modelAttribute="editAssetsForm" class="form-signin">
-            <h2 class="form-signin-heading">Add Asset</h2>     
-            
+            <h2 class="form-signin-heading">Asset Details:</h2>
              <spring:bind path="assetId">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input type="text" path="assetId" class="form-control" placeholder="Asset Id"
@@ -40,7 +39,7 @@ pageEncoding="ISO-8859-1"%>
                     <form:errors path="assetId"></form:errors>
                 </div>
             </spring:bind>
-            
+
             <spring:bind path="productName">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input type="text" path="productName" class="form-control" placeholder="Product Name"
@@ -63,7 +62,7 @@ pageEncoding="ISO-8859-1"%>
                     <form:errors path="productCondition"></form:errors>
                 </div>
             </spring:bind>
-            
+
               <spring:bind path="productColor">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input type="text" path="productColor" class="form-control"
@@ -71,39 +70,39 @@ pageEncoding="ISO-8859-1"%>
                     <form:errors path="productColor"></form:errors>
                 </div>
             </spring:bind>
-            
+
               <spring:bind path="inUse">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                                
+
                                 <label for="inUse">In Use:</label><br>
 								<select id="inUse" name="inUse">
 								  <option value="yes">Yes</option>
 								  <option value="no">No</option>
 								</select>
-                                
+
                     <form:errors path="inUse"></form:errors>
                 </div>
             </spring:bind>
-            
-            
+
+
               <spring:bind path="employee">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                                 
+
                                 <label for="employee">Employee Id:</label><br>
-                                
+
 								<select id="employee" name="employee">
 								<c:forEach items="${empList}" var="item">
-    								<option value="${item}">${item}</option><br>   
-    								
-    								
+    								<option value="${item}">${item}</option><br>
+
+
     								</c:forEach>
 								</select>
-                                
+
                     <form:errors path="employee"></form:errors>
                 </div>
             </spring:bind>
-            
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Add Asset</button>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Update Asset</button>
         </form:form>
 
     </div>

@@ -38,7 +38,10 @@
                 </div>
 
             <button type="submit"  class="btn btn-lg btn-primary btn-block" >Search</button>
-            
+
+            <caption><h2>${message}</h2></caption>
+
+           <c:if test="${asset.size() > 0}">
             <div align="center">
 					<table border="2" cellpadding="5" >
 						<caption><h2>View Asset Details:</h2></caption>
@@ -50,21 +53,19 @@
 							<th>Condition</th>
 							<th>In Use</th>
 						</tr>
-							<c:forEach var="asset" items="${asset}">
-					<tr>
-						<td><a href="/editasset/${asset.assetId}"> ${asset.assetId}</a></td> 
-						<td><c:out value="${asset.productName}" /></td>
-						<td><c:out value="${asset.modelName}" /></td>
-						<td><c:out value="${asset.productColor}" /></td>
-						<td><c:out value="${asset.productCondition}" /></td>
-						<td><c:out value="${asset.inUse}" /></td>
-						
-					</tr>
+						<c:forEach var="asset" items="${asset}">
+					    <tr>
+                            <td><a href="/editasset/${asset.assetId}"> ${asset.assetId}</a></td>
+                            <td><c:out value="${asset.productName}" /></td>
+                            <td><c:out value="${asset.modelName}" /></td>
+                            <td><c:out value="${asset.productColor}" /></td>
+                            <td><c:out value="${asset.productCondition}" /></td>
+                            <td><c:out value="${asset.inUse}" /></td>
+					    </tr>
 						</c:forEach>
-			
 					</table>
-				</div>
-            
+			</div>
+			 </c:if>
         </form:form>
 
     </div>
