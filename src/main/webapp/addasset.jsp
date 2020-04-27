@@ -28,7 +28,6 @@ pageEncoding="ISO-8859-1"%>
 
         <div><h3>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <input type="button" value="Home" onclick="location.href='/welcome'"/>  </h3></div>
     </c:if>
-    
 
         <form:form method="POST" modelAttribute="assetForm" class="form-signin">
             <h2 class="form-signin-heading">Add Asset</h2>     
@@ -43,8 +42,7 @@ pageEncoding="ISO-8859-1"%>
             
             <spring:bind path="productName">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="productName" class="form-control" placeholder="Product Name"
-                                autofocus="true"></form:input>
+                    <form:input type="text" path="productName" class="form-control" placeholder="Product Name"></form:input>
                     <form:errors path="productName"></form:errors>
                 </div>
             </spring:bind>
@@ -78,7 +76,7 @@ pageEncoding="ISO-8859-1"%>
                                 <label for="inUse">In Use:</label><br>
 								<select id="inUse" name="inUse">
 								  <option value="yes">Yes</option>
-								  <option value="no">No</option>
+								  <option selected value="no">No</option>
 								</select>
                                 
                     <form:errors path="inUse"></form:errors>
@@ -92,11 +90,10 @@ pageEncoding="ISO-8859-1"%>
                                 <label for="employee">Employee Id:</label><br>
                                 
 								<select id="employee" name="employee">
+								    <option disabled selected> Select </option>
 								<c:forEach items="${empList}" var="item">
     								<option value="${item}">${item}</option><br>   
-    								
-    								
-    								</c:forEach>
+    							</c:forEach>
 								</select>
                                 
                     <form:errors path="employee"></form:errors>

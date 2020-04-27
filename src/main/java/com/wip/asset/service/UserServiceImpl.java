@@ -66,12 +66,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<Asset> getAssets(String asset) {
-		return assetRepository.findById(Long.parseLong(asset));
+		return assetRepository.findById(asset);
 	}
 
 	@Override
 	public List<Asset> getEmployeeById(String empID) {
-		Optional<Employee> op = empRepository.findById(Long.parseLong(empID));
+		Optional<Employee> op = empRepository.findById(empID);
 		if (op.isPresent())
 		 return op.get().getAssets();
 		return null;

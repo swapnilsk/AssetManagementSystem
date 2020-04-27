@@ -91,10 +91,9 @@ pageEncoding="ISO-8859-1"%>
                                 <label for="employee">Employee Id:</label><br>
 
 								<select id="employee" name="employee">
+                                	 <option disabled selected>Select</option>
 								<c:forEach items="${empList}" var="item">
     								<option value="${item}">${item}</option><br>
-
-
     								</c:forEach>
 								</select>
 

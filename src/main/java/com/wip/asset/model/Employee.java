@@ -17,7 +17,7 @@ public class Employee {
 	 */
 	
 	@Id
-    private Long employeeId;
+    private String employeeId;
 
     private String surname;
 
@@ -37,11 +37,11 @@ public class Employee {
 	 * 
 	 * public void setId(Long id) { this.id = id; }
 	 */
-	public Long getEmployeeId() {
+	public String getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Long employeeId) {
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 

@@ -19,7 +19,7 @@
     <div class="container">
       <form method="POST" action="${contextPath}/login" class="form-signin">
       <h2>Asset Manager</h2>  <br><br>
-        <h2 class="form-heading">login</h2>
+        <h2 class="form-heading">Login</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>

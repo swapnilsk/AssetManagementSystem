@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Asset {
 	
 	    @Id
-	 	private Long assetId;
+	 	private String assetId;
 	 	
 	 	private String productName;
 	 	
@@ -32,11 +32,11 @@ public class Asset {
 	 * 
 	 * public void setId(Long id) { this.id = id; }
 	 */
-		public Long getAssetId() {
+		public String getAssetId() {
 			return assetId;
 		}
 
-		public void setAssetId(Long assetId) {
+		public void setAssetId(String assetId) {
 			this.assetId = assetId;
 		}
 

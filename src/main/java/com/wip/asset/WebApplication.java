@@ -19,7 +19,7 @@ public class WebApplication implements CommandLineRunner {
     
     @Override
 	public void run(String... args) throws Exception {
-    	User user = new User();user.setUsername("admin");user.setPassword("admin");
+    	User user = new User();user.setUsername("a");user.setPassword("a");
     	userService.save(user);
 	}
 }
