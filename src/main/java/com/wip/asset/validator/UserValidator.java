@@ -53,14 +53,14 @@ public class UserValidator implements Validator {
 	public void validateAsset(Object o, Errors errors) {
 		Asset asset = (Asset) o;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "modelName", "NotEmpty");
+		//TODO The commented code does not belong here
+		/*ValidationUtils.rejectIfEmptyOrWhitespace(errors, "modelName", "NotEmpty");
 		if (asset.getModelName().length() < 6 || asset.getModelName().length() > 32) {
 			errors.rejectValue("modelName", "Size.userForm.username");
 		}
 		if (userService.findByUsername(asset.getModelName()) != null) {
 			errors.rejectValue("modelName", "Duplicate.userForm.username");
-		}
-
+		}*/
 		String regexAlphaNumeric = "^[a-zA-Z0-9]+$";
 		String regexAlphabetOnly = "^[a-zA-Z]+$";
 		if(asset==null) return;
