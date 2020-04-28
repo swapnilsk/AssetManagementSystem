@@ -31,8 +31,12 @@ pageEncoding="ISO-8859-1"%>
     
 
         <form:form method="POST" modelAttribute="assetForm" class="form-signin">
-            <h2 class="form-signin-heading">Add Asset</h2>     
-            
+        <div class="text-center">
+            <h2 class="form-signin-heading">Asset Details</h2>
+            </div>
+
+            <div class="panel panel-default">
+            <div class="panel-body">
              <spring:bind path="assetId">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                 <h5>Asset Id: <span class="label label-default"></span></h5>
@@ -106,6 +110,8 @@ pageEncoding="ISO-8859-1"%>
             </spring:bind>
             <div class="text-center">
             <button class="btn btn-lg btn-primary" type="submit">Add Asset</button>
+            </div>
+            </div>
             </div>
         </form:form>
 

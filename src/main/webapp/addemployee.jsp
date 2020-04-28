@@ -27,8 +27,12 @@
     </c:if>
 
         <form:form method="POST" modelAttribute="employeeForm" class="form-signin">
-            <h2 class="form-signin-heading">Add Employee</h2>     
-            
+        <div class="text-center">
+            <h2 class="form-signin-heading">Add Employee</h2>
+            </div>
+            <div class="panel panel-default">
+            <div class="panel-body">
+
              <spring:bind path="employeeId">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                 <h5>Employee Id: <span class="label label-default"></span></h5>
@@ -78,6 +82,8 @@
             </spring:bind>
             <div class="text-center">
             <button class="btn btn-lg btn-primary" type="submit">Add Employee</button>
+            </div>
+            </div
             </div>
         </form:form>
 
