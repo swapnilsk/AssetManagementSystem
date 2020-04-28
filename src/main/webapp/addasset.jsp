@@ -72,15 +72,14 @@ pageEncoding="ISO-8859-1"%>
               <spring:bind path="productColor">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                 <h5>Product Color: <span class="label label-default"></span></h5>
-                    <form:input type="text" path="productColor" class="form-control"
-                                placeholder="Product Color"></form:input>
+                    <form:input type="text" path="productColor" class="form-control"></form:input>
                     <form:errors path="productColor"></form:errors>
                 </div>
             </spring:bind>
             
               <spring:bind path="inUse">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                                
+
                                 <label for="inUse">In Use:</label><br>
 								<select id="inUse" name="inUse">
 								  <option value="yes">Yes</option>
