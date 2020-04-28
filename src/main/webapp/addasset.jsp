@@ -104,8 +104,9 @@ pageEncoding="ISO-8859-1"%>
                     <form:errors path="employee"></form:errors>
                 </div>
             </spring:bind>
-            
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Add Asset</button>
+            <div class="text-center">
+            <button class="btn btn-lg btn-primary" type="submit">Add Asset</button>
+            </div>
         </form:form>
 
     </div>

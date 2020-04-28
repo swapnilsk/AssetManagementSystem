@@ -31,52 +31,54 @@
             
              <spring:bind path="employeeId">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="employeeId" class="form-control" placeholder="Employee Id"
-                                autofocus="true"></form:input>
+                <h5>Employee Id: <span class="label label-default"></span></h5>
+                    <form:input type="text" path="employeeId" class="form-control"></form:input>
                     <form:errors path="employeeId"></form:errors>
                 </div>
             </spring:bind>
             
             <spring:bind path="surname">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="surname" class="form-control" placeholder="Surname"
-                                autofocus="true"></form:input>
+                <h5>Employee Surname: <span class="label label-default"></span></h5>
+                    <form:input type="text" path="surname" class="form-control"></form:input>
                     <form:errors path="surname"></form:errors>
                 </div>
             </spring:bind>
 
             <spring:bind path="name">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="name" class="form-control" placeholder="Name"></form:input>
+                <h5>Employee Name: <span class="label label-default"></span></h5>
+                    <form:input type="text" path="name" class="form-control"></form:input>
                     <form:errors path="name"></form:errors>
                 </div>
             </spring:bind>
 
             <spring:bind path="mobileNumber">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="mobileNumber" class="form-control"
-                                placeholder="Mobile Number"></form:input>
+                <h5>Mobile Number: <span class="label label-default"></span></h5>
+                    <form:input type="text" path="mobileNumber" class="form-control"></form:input>
                     <form:errors path="mobileNumber"></form:errors>
                 </div>
             </spring:bind>
             
               <spring:bind path="location">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="location" class="form-control"
-                                placeholder="Location"></form:input>
+                <h5>Location: <span class="label label-default"></span></h5>
+                    <form:input type="text" path="location" class="form-control"></form:input>
                     <form:errors path="location"></form:errors>
                 </div>
             </spring:bind>
             
               <spring:bind path="designation">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="designation" class="form-control"
-                                placeholder="Designation"></form:input>
+                <h5>Designation: <span class="label label-default"></span></h5>
+                    <form:input type="text" path="designation" class="form-control"></form:input>
                     <form:errors path="designation"></form:errors>
                 </div>
             </spring:bind>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Add Employee</button>
+            <div class="text-center">
+            <button class="btn btn-lg btn-primary" type="submit">Add Employee</button>
+            </div>
         </form:form>
 
     </div>
