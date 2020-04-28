@@ -12,7 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -106,6 +109,7 @@ public class UserController {
         //TODO Remove this code before final submission
         // userValidator.validateEmployeeIDAndAssetId(empID, assetID, model);
         List<Asset> list = new ArrayList<>();
+        List<Asset> list_res = new ArrayList<>();
         List<Asset> arrayList = new ArrayList<>();
         if ((empID == null || empID.trim().isEmpty()) && (assetID == null || assetID.trim().isEmpty())) {
             list.addAll(userService.getAllAssets());
@@ -128,9 +132,14 @@ public class UserController {
         }
         if (list.size() == 0) {
             model.addAttribute("message", "No Records Found");
+        } else {
+            list_res = list.stream()
+                    .sorted(Comparator.comparing(Asset::getAssetId))
+                    .collect(Collectors.toList());
+
         }
         if (model.getAttribute("message") == null)
-            model.addAttribute("asset", list);
+            model.addAttribute("asset", list_res);
         return "viewassetlist";
     }
 
