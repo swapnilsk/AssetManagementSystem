@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"%>
-
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -28,7 +26,6 @@ pageEncoding="ISO-8859-1"%>
 
         <div><h3>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <input type="button" value="Home" onclick="location.href='/welcome'"/>  </h3></div>
     </c:if>
-    
 
         <form:form method="POST" modelAttribute="assetForm" class="form-signin">
         <div class="text-center">
@@ -83,7 +80,7 @@ pageEncoding="ISO-8859-1"%>
                                 <label for="inUse">In Use:</label><br>
 								<select id="inUse" name="inUse">
 								  <option value="yes">Yes</option>
-								  <option value="no">No</option>
+								  <option selected value="no">No</option>
 								</select>
                                 
                     <form:errors path="inUse"></form:errors>
@@ -97,11 +94,10 @@ pageEncoding="ISO-8859-1"%>
                                 <label for="employee">Employee Id:</label><br>
                                 
 								<select id="employee" name="employee">
+								    <option disabled selected> Select </option>
 								<c:forEach items="${empList}" var="item">
     								<option value="${item}">${item}</option><br>   
-    								
-    								
-    								</c:forEach>
+    							</c:forEach>
 								</select>
                                 
                     <form:errors path="employee"></form:errors>

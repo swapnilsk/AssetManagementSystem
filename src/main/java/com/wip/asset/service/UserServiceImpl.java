@@ -42,6 +42,12 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByUsername(username);
 	}
 
+	//TODO Remove this code before final submission
+	/*@Override
+	public Asset findByModelName(String modelName) {
+		return assetRepository.findByModelName(modelName);
+	}*/
+
 	@Override
 	public void saveEmployee(Employee emp) {
 		empRepository.save(emp);
@@ -51,7 +57,6 @@ public class UserServiceImpl implements UserService {
 	public List<String> getEmployee() {
 		List<Employee> emp = empRepository.findAll();
 		List<String> listEmpId = new ArrayList<>();
-
 		for (Employee empId : emp) {
 			listEmpId.add(empId.getEmployeeId().toString());
 		}
@@ -66,12 +71,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<Asset> getAssets(String asset) {
-		return assetRepository.findById(Long.parseLong(asset));
+		assetRepository.findAll();
+		return assetRepository.findById(asset);
+	}
+
+	@Override
+	public List<Asset> getAllAssets() {
+		return assetRepository.findAll();
 	}
 
 	@Override
 	public List<Asset> getEmployeeById(String empID) {
-		Optional<Employee> op = empRepository.findById(Long.parseLong(empID));
+		Optional<Employee> op = empRepository.findById(empID);
 		if (op.isPresent())
 		 return op.get().getAssets();
 		return null;

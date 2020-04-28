@@ -11,8 +11,11 @@ public interface UserService {
     void save(User user);
     void saveEmployee(Employee emp);
     User findByUsername(String username);
+	//TODO Remove this code before final submission
+	//Asset findByModelName(String modelName);
 	List<String> getEmployee();
 	void saveAsset(Asset assetForm);
 	Optional<Asset> getAssets(String assetForm);
+	List<Asset> getAllAssets();
 	List<Asset> getEmployeeById(String empID);
 }
