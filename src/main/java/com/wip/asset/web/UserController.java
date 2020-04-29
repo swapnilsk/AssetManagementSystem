@@ -1,9 +1,6 @@
 package com.wip.asset.web;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import com.wip.asset.model.Asset;
 import com.wip.asset.model.Employee;
 import com.wip.asset.model.User;
 import com.wip.asset.service.SecurityService;
@@ -13,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import com.wip.asset.model.Asset;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -112,39 +109,39 @@ public class UserController {
     @PostMapping(value = "/viewassetlist")
     public String viewAssetDetails(@RequestParam("empID") String empID, @RequestParam("assetID") String assetID, Model model) {
         //userValidator.validateEmployeeIDAndAssetId(empID, assetID, model);
-        if (model.getAttribute("message") == null) {
-            List<Asset> list = new ArrayList<>();
-            if (!assetID.isEmpty()) {
-                Optional<Asset> op = userService.getAssets(assetID);
-                if (op.isPresent()) {
-                    list.add(op.get());
-                } else {
-                    model.addAttribute("message", "No asset found . Incorrect Asset ID");
-                }
-            }
-            if (!empID.isEmpty() && model.getAttribute("message") == null) {
-                list = new ArrayList<>();
-                List<Asset> assetList = userService.getEmployeeById(empID);
-                if (assetList == null) {
-                    model.addAttribute("message", "No asset found . Incorrect Employee ID");
-                } else if (!assetID.isEmpty() && assetID != null) {
-                    for (Asset asset : assetList) {
-                        if (assetID.equalsIgnoreCase(asset.getAssetId().toString())) {
-                            list.add(asset);
-                        }
-                    }
-                    if (list.size() < 1) {
-                        model.addAttribute("message", "No matching data found for the given Asset ID & Employee Id");
-                    }
-                } else {
-                    list.addAll(assetList);
-                }
-            }
-            if (model.getAttribute("message") == null)
-                model.addAttribute("asset", list);
-        }
-        return "viewassetlist";
-    }
+		List<Asset> list = new ArrayList<>();
+		List<Asset> sortedList = new ArrayList<>();
+		List<Asset> arrayList = new ArrayList<>();
+		if ((empID == null || empID.trim().isEmpty()) && (assetID == null || assetID.trim().isEmpty())) {
+			list.addAll(userService.getAllAssets());
+		} else if (model.getAttribute("message") == null) {
+			if (!assetID.isEmpty()) {
+				Optional<Asset> op = userService.getAssets(assetID);
+				if (op.isPresent()) {
+					list.add(op.get());
+				}
+			}
+			if (!empID.isEmpty()) {
+				List<Asset> assetList = userService.getEmployeeById(empID);
+				for (Asset asset : assetList) {
+					if (!assetID.equalsIgnoreCase(asset.getAssetId())) {
+						arrayList.add(asset);
+					}
+				}
+			}
+			list.addAll(arrayList);
+		}
+		if (list.size() == 0) {
+			model.addAttribute("message", "No Records Found");
+		} else {
+			sortedList = list.stream()
+					.sorted(Comparator.comparing(Asset::getAssetId))
+					.collect(Collectors.toList());
+		}
+		if (model.getAttribute("message") == null)
+			model.addAttribute("asset", sortedList);
+		return "viewassetlist";
+	}
 
 	@GetMapping("/editasset/{assetId}")
 	public String editAssets(@PathVariable(name = "assetId") String assetId, Model model) {
