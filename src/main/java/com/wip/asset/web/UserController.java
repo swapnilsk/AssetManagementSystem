@@ -42,7 +42,7 @@ public class UserController {
 		return "login";
 	}
 
-	@GetMapping({ "/", "/welcome" })
+	@GetMapping({ "/home","/" })
 	public String welcome(Model model) {
 		return "welcome";
 	}
@@ -62,7 +62,7 @@ public class UserController {
 		}
 		userService.save(userForm);
 		securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
-		return "redirect:/welcome";
+		return "redirect:/home";
 	}
 
 	@GetMapping("/addasset")
@@ -74,14 +74,16 @@ public class UserController {
 	}
 
 	@PostMapping("/addasset")
-	public String addasset(@ModelAttribute("assetForm") Asset assetForm, BindingResult bindingResult) {
+	public String addasset(@ModelAttribute("assetForm") Asset assetForm, BindingResult bindingResult , Model model) {
 		userValidator.validateAsset(assetForm, bindingResult);
 
 		if (bindingResult.hasErrors()) {
+			List<String> listEmp = userService.getEmployee();
+			model.addAttribute("empList", listEmp);
 			return "addasset";
 		}
 		userService.saveAsset(assetForm);
-		return "redirect:/welcome";
+		return "redirect:/home";
 	}
 
 	@GetMapping("/addemployee")
@@ -98,8 +100,8 @@ public class UserController {
 			return "addemployee";
 		}
 
-		userService.saveEmployee(employeeForm);
-		return "redirect:/welcome";
+		userService.saveEmployee(employeeForm);;
+		return "redirect:/home";
 	}
 
 	@GetMapping("/viewassetlist")

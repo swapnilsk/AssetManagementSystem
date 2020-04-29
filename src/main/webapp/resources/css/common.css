@@ -46,3 +46,20 @@ body {
 .has-error {
     color: red
 }
+
+#bottom-footer {
+background-color:cadetblue;
+color:white;
+margin-top: 2rem;
+padding-top: .3rem;
+}
+.vertical-links>li {
+display: inline-block;
+vertical-align: text-bottom;
+}
+.vertical-links>li>a {
+color: white;
+font-weight: 400;
+margin-left: 1rem;
+list-style-type:square;
+}

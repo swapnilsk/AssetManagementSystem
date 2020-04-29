@@ -2,75 +2,88 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
+<!-- Bootstrap Borders -->
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="utf-8">
-      <title>Create an account</title>
+<html>
+	<head>
+          <meta charset="utf-8">
+          <title>Create an account</title>
 
-      <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-      <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-  </head>
+          <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+          <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 
-  <body>
 
-    <div class="container">
-    
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
+      </head>
 
-       <div><h3>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <input type="button" value="Home" onclick="location.href='/welcome'"/>  </h3></div>
-    </c:if>
+	<body>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+                        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+</c:if>
 
-        <form:form name="viewassetlist" action="viewassetlist" method="POST">
-            <h1 class="form-signin-heading" align="center">Search Asset:</h2>     
-            
-          
-                <div class="form-group ${status.error ? 'has-error' : ''}" align="center">
-                    <input type="text" name='assetID'  placeholder="Asset ID:" autofocus="true"  class="form-control"></input>
-                </div>
-           
-                <div class="form-group ${status.error ? 'has-error' : ''}" align="center">
-                    <input type="text" name='empID'  placeholder="Employee ID:" autofocus="true" class="form-control"></input>
-                </div>
+<div class="container">
+<div class="row row-no-gutters"  id="bottom-footer" >
 
-            <button type="submit"  class="btn btn-lg btn-primary btn-block" >Search</button>
+                                    <div class="col-xs-12 col-md-5 text-center" ><h3>Search Asset</h3></div>
 
-            <caption><h2>${message}</h2></caption>
+                                     <div class="col-xs-12 col-md-2 text-center" ></div>
+                               <div class="col-xs-12 col-md-5 text-center" >
+                               <ul>
+                                  <div><h3>Hello ${pageContext.request.userPrincipal.name} |
+                                   <a onclick="document.forms['logoutForm'].submit()">Logout</a> |
+                                    <input type="button" value="Home" onclick="location.href='/home'"/> </h3>
+                                  </div>
+                                </ul>
+                               </div>
 
-           <c:if test="${asset.size() > 0}">
-            <div align="center">
-					<table border="2" cellpadding="5" >
-						<caption><h2>View Asset Details:</h2></caption>
-						<tr>
-							<th>Asset Id</th>
-							<th>Product</th>
-							<th>Model</th>
-							<th>Color</th>
-							<th>Condition</th>
-							<th>In Use</th>
-						</tr>
-						<c:forEach var="asset" items="${asset}">
-					    <tr>
-                            <td><a href="/editasset/${asset.assetId}"> ${asset.assetId}</a></td>
-                            <td><c:out value="${asset.productName}" /></td>
-                            <td><c:out value="${asset.modelName}" /></td>
-                            <td><c:out value="${asset.productColor}" /></td>
-                            <td><c:out value="${asset.productCondition}" /></td>
-                            <td><c:out value="${asset.inUse}" /></td>
-					    </tr>
-						</c:forEach>
-					</table>
-			</div>
-			 </c:if>
-        </form:form>
+</div>
 
-    </div>
+                            <div align="center">
+                                <form:form name="viewassetlist" action="viewassetlist" method="POST">
+                                <br><br>
+                                                 <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                    <input type="text" id="txtSearchAssetId" name='assetID'  placeholder="Asset ID:" autofocus="true"  class="form-control"></input>
+                                                </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-  </body>
+                                                <div class="form-group ${status.error ? 'has-error' : ''}" align="center">
+                                                    <input type="text" id="txtSearchEmployeeId" name='empID'  placeholder="Employee ID:" autofocus="true" class="form-control"></input>
+                                                </div>
+
+                                            <button type="submit" id="btnSearch" class="btn btn-lg btn-primary btn-block" >Search</button>
+
+                                            <div id = "errorMsg"><caption><h2>${message}</h2></caption></div>
+
+                                           <c:if test="${asset.size() > 0}">
+                                            <div align="center">
+                                					<table class="table" border="2" cellpadding="5" >
+                                						<caption><h2>View Asset Details:</h2></caption>
+                                						<tr>
+                                							<th >Asset Id</th>
+                                							<th>Product</th>
+                                							<th>Model</th>
+                                							<th>Color</th>
+                                							<th>Condition</th>
+                                							<th>In Use</th>
+                                						</tr>
+                                						<c:forEach var="asset" items="${asset}">
+                                					    <tr>
+                                                            <td><a href="/editasset/${asset.assetId}"> ${asset.assetId}</a></td>
+                                                            <td><c:out value="${asset.productName}" /></td>
+                                                            <td><c:out value="${asset.modelName}" /></td>
+                                                            <td><c:out value="${asset.productColor}" /></td>
+                                                            <td><c:out value="${asset.productCondition}" /></td>
+                                                            <td><c:out value="${asset.inUse}" /></td>
+                                					    </tr>
+                                						</c:forEach>
+                                					</table>
+                                			</div>
+                                			 </c:if>
+                                        </form:form>
+
+                             </div>
+
+</div>
+
+	</body>
 </html>

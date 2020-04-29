@@ -21,7 +21,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <div><h3>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <input type="button" value="Home" onclick="location.href='/welcome'"/>  </h3></div>
+        <div><h3>Hello ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <input type="button" value="Home" onclick="location.href='/welcome'"/>  </h3></div>
     </c:if>
 
         <form:form method="POST" modelAttribute="userForm" class="form-signin">
