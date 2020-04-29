@@ -111,7 +111,7 @@ public class UserController {
 
     @PostMapping(value = "/viewassetlist")
     public String viewAssetDetails(@RequestParam("empID") String empID, @RequestParam("assetID") String assetID, Model model) {
-        userValidator.validateEmployeeIDAndAssetId(empID, assetID, model);
+        //userValidator.validateEmployeeIDAndAssetId(empID, assetID, model);
         if (model.getAttribute("message") == null) {
             List<Asset> list = new ArrayList<>();
             if (!assetID.isEmpty()) {
