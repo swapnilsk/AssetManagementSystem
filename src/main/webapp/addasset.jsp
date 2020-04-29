@@ -38,7 +38,8 @@
 
 
 </div>
-
+<div class="panel panel-default">
+            <div class="panel-body">
 
                             <div align="center">
 
@@ -47,38 +48,40 @@
 
                                              <spring:bind path="assetId">
                                                 <div id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input type="text" id="txtAssetID" path="assetId" class="form-control" placeholder="Asset Id"
-                                                                autofocus="true"></form:input>
+                                                <h5>Asset Id: <span class="label label-default"></span></h5>
+                                                    <form:input type="text" id="txtAssetID" path="assetId" class="form-control"></form:input>
                                                     <form:errors path="assetId"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                             <spring:bind path="productName">
                                                 <div id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input type="text" id="txtProduct" path="productName" class="form-control" placeholder="Product Name"></form:input>
+                                                <h5>Product Name: <span class="label label-default"></span></h5>
+                                                    <form:input type="text" id="txtProduct" path="productName" class="form-control"></form:input>
                                                     <form:errors path="productName"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                             <spring:bind path="modelName">
                                                 <div id="errorMsg"class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input type="text" id="txtModel" path="modelName" class="form-control" placeholder="Model Name"></form:input>
+                                                <h5>Model Name: <span class="label label-default"></span></h5>
+                                                    <form:input type="text" id="txtModel" path="modelName" class="form-control"></form:input>
                                                     <form:errors path="modelName"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                             <spring:bind path="productCondition">
                                                 <div id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input type="text" id="txtCondition" path="productCondition" class="form-control"
-                                                                placeholder="Product Condition"></form:input>
+                                                <h5>Product Condition: <span class="label label-default"></span></h5>
+                                                    <form:input type="text" id="txtCondition" path="productCondition" class="form-control"></form:input>
                                                     <form:errors path="productCondition"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                               <spring:bind path="productColor">
                                                 <div id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input type="text" id="txtColor" path="productColor" class="form-control"
-                                                                placeholder="Product Color"></form:input>
+                                                <h5>Product Color: <span class="label label-default"></span></h5>
+                                                    <form:input type="text" id="txtColor" path="productColor" class="form-control"></form:input>
                                                     <form:errors path="productColor"></form:errors>
                                                 </div>
                                             </spring:bind>
@@ -114,9 +117,11 @@
                                                 <br>  <br>  <br>
                                             </spring:bind>
 
-                                            <button class="btn btn-lg btn-primary btn-block" type="submit">Add Asset</button>
+                                            <button class="btn btn-lg btn-primary" type="submit">Add Asset</button>
                                         </form:form>
 
+                             </div>
+                             </div>
                              </div>
 
 </div>

@@ -20,17 +20,22 @@
       <form method="POST" action="${contextPath}/login" class="form-signin">
       <h2>Asset Manager</h2>  <br><br>
         <h2 class="form-heading">Login</h2>
+        <div class="panel panel-default">
+                <div class="panel-body">
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <div id= "errorMsg">${message}</div>
-            <input name="username" id="txtUserName" type="text" class="form-control" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" Id ="txtPassword" type="password" class="form-control" placeholder="Password"/>
+            <h5>Username <span class="label label-default"></span></h5>
+            <input name="username" id="txtUserName" type="text" class="form-control"/>
+            <h5>Password <span class="label label-default"></span></h5>
+            <input name="password" Id ="txtPassword" type="password" class="form-control"/>
             <span>${error}</span>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <button class="btn btn-lg btn-primary btn-block" id="btnSignin" type="submit">Log In</button>
+            <button class="btn btn-lg btn-primary" id="btnSignin" type="submit">Sign In</button>
             <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+            </div>
+            </div>
         </div>
       </form>
     </div>

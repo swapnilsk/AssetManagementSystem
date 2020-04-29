@@ -27,6 +27,7 @@
 
                                     <div class="col-xs-12 col-md-5 text-center" ><h3>Add Employee</h3></div>
 
+
                                      <div class="col-xs-12 col-md-2 text-center" ></div>
                                <div class="col-xs-12 col-md-5 text-center" >
                                <ul>
@@ -39,6 +40,8 @@
 
 
 </div>
+<div class="panel panel-default">
+            <div class="panel-body">
 
 
                             <div align="center">
@@ -48,54 +51,57 @@
 
                                              <spring:bind path="employeeId">
                                                 <div Id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input id="txtEmployeeID" type="text" path="employeeId" class="form-control" placeholder="Employee Id"
-                                                                autofocus="true"></form:input>
+                                                <h5>Employee Id: <span class="label label-default"></span></h5>
+                                                    <form:input id="txtEmployeeID" type="text" path="employeeId" class="form-control"></form:input>
                                                     <form:errors path="employeeId"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                             <spring:bind path="surname">
                                                 <div Id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input type="text" path="surname" class="form-control" placeholder="Surname"
-                                                                autofocus="true"></form:input>
+                                                <h5>Employee Surname: <span class="label label-default"></span></h5>
+                                                    <form:input type="text" path="surname" class="form-control"></form:input>
                                                     <form:errors path="surname"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                             <spring:bind path="name">
                                                 <div Id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input id="txtName" type="text" path="name" class="form-control" placeholder="Name"></form:input>
+                                                <h5>Employee Name: <span class="label label-default"></span></h5>
+                                                    <form:input id="txtName" type="text" path="name" class="form-control"></form:input>
                                                     <form:errors path="name"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                             <spring:bind path="mobileNumber">
                                                 <div Id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input id="txtMobile" type="text" path="mobileNumber" class="form-control"
-                                                                placeholder="Mobile Number"></form:input>
+                                                <h5>Mobile Number: <span class="label label-default"></span></h5>
+                                                    <form:input id="txtMobile" type="text" path="mobileNumber" class="form-control"></form:input>
                                                     <form:errors path="mobileNumber"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                               <spring:bind path="location">
                                                 <div Id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input id="txtLocation" type="text" path="location" class="form-control"
-                                                                placeholder="Location"></form:input>
+                                                <h5>Location: <span class="label label-default"></span></h5>
+                                                    <form:input id="txtLocation" type="text" path="location" class="form-control"></form:input>
                                                     <form:errors path="location"></form:errors>
                                                 </div>
                                             </spring:bind>
 
                                               <spring:bind path="designation">
                                                 <div Id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <form:input id="txtDesignation" type="text" path="designation" class="form-control"
-                                                                placeholder="Designation"></form:input>
+                                                <h5>Designation: <span class="label label-default"></span></h5>
+                                                    <form:input id="txtDesignation" type="text" path="designation" class="form-control"></form:input>
                                                     <form:errors path="designation"></form:errors>
                                                 </div>
                                             </spring:bind>
 
-                                            <button id="addEmployee" class="btn btn-lg btn-primary btn-block" type="submit">Add Employee</button>
+                                            <button id="addEmployee" class="btn btn-lg btn-primary" type="submit">Add Employee</button>
                                         </form:form>
 
+                             </div>
+                             </div>
                              </div>
 
 </div>

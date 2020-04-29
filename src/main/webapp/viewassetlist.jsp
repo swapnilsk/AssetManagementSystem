@@ -25,7 +25,7 @@
 <div class="container">
 <div class="row row-no-gutters"  id="bottom-footer" >
 
-                                    <div class="col-xs-12 col-md-5 text-center" ><h3>Search Asset</h3></div>
+                                    <div class="col-xs-12 col-md-5 text-center" ><h3>View Asset ListAsset</h3></div>
 
                                      <div class="col-xs-12 col-md-2 text-center" ></div>
                                <div class="col-xs-12 col-md-5 text-center" >
@@ -43,14 +43,16 @@
                                 <form:form name="viewassetlist" action="viewassetlist" method="POST">
                                 <br><br>
                                                  <div class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <input type="text" id="txtSearchAssetId" name='assetID'  placeholder="Asset ID:" autofocus="true"  class="form-control"></input>
+                                                 <h5>Asset Id:<span class="label label-default"></span></h5>
+                                                    <input type="text" id="txtSearchAssetId" name='assetID' class="form-control"></input>
                                                 </div>
 
                                                 <div class="form-group ${status.error ? 'has-error' : ''}" align="center">
-                                                    <input type="text" id="txtSearchEmployeeId" name='empID'  placeholder="Employee ID:" autofocus="true" class="form-control"></input>
+                                                <h5>Employee Id:<span class="label label-default"></span></h5>
+                                                    <input type="text" id="txtSearchEmployeeId" name='empID' class="form-control"></input>
                                                 </div>
 
-                                            <button type="submit" id="btnSearch" class="btn btn-lg btn-primary btn-block" >Search</button>
+                                            <button type="submit" id="btnSearch" class="btn btn-lg btn-primary" >Search</button>
 
                                             <div id = "errorMsg"><caption><h2>${message}</h2></caption></div>
 
