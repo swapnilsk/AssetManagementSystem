@@ -131,11 +131,12 @@ public class UserValidator implements Validator {
 			errors.rejectValue("employee","AssetValidation.employee.mandatory");
 	}
 
-	public void validateEmployeeIDAndAssetId(String empID, String assetID, Model model) {
+	//TODO Remove this code before final submission
+	/*public void validateEmployeeIDAndAssetId(String empID, String assetID, Model model) {
 		if ((empID == null || empID.trim().isEmpty()) && (assetID == null || assetID.trim().isEmpty())) {
 			model.addAttribute("message", "Please enter a valid Employee Id or Asset Id");
 		}
-	}
+	}*/
 
 	private boolean isRegexCompatible(String regex, String valueToValidate) {
 		Pattern pattern = Pattern.compile(regex);
