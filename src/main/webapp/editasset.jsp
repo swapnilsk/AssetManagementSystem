@@ -34,7 +34,7 @@
                   <spring:bind path="assetId">
                      <div id="errorMsg" class="form-group ${status.error ? 'has-error' : ''}">
                          <h5>Asset Id: <span class="label label-default"></span></h5>
-                         <form:input type="text" id="txtAssetID" path="assetId" class="form-control"></form:input>
+                         <form:input type="text"  id="txtAssetID" path="assetId" class="form-control" readonly = "true"></form:input>
                          <form:errors path="assetId"></form:errors>
                      </div>
                  </spring:bind>
@@ -96,7 +96,7 @@
                 </spring:bind>
                 <div align="center">
                     <br>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Update Asset</button>
+                    <button class="btn btn-lg btn-primary" type="submit">Update Asset</button>
                 </div>
             </form:form>
         </div>
