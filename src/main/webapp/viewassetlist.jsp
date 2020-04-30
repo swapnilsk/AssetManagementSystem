@@ -25,7 +25,7 @@
 <div class="container">
 <div class="row row-no-gutters"  id="bottom-footer" >
 
-                                    <div class="col-xs-12 col-md-5 text-center" ><h3>View Asset ListAsset</h3></div>
+                                    <div class="col-xs-12 col-md-5 text-center" ><h3>View Asset List</h3></div>
 
                                      <div class="col-xs-12 col-md-2 text-center" ></div>
                                <div class="col-xs-12 col-md-5 text-center" >
