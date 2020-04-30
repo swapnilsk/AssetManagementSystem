@@ -94,8 +94,10 @@
                         <form:errors path="employee"></form:errors>
                     </div>
                 </spring:bind>
-
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Update Asset</button>
+                <div align="center">
+                    <br>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Update Asset</button>
+                </div>
             </form:form>
         </div>
     </body>

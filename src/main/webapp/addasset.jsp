@@ -95,7 +95,9 @@
                     </div>
                     <br>  <br>  <br>
                 </spring:bind>
-                <button class="btn btn-lg btn-primary" type="submit">Add Asset</button>
+                <div align="center">
+                    <button class="btn btn-lg btn-primary" type="submit">Add Asset</button>
+                </div>
             </form:form>
         </div>
     </body>

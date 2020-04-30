@@ -92,7 +92,9 @@
                         <form:errors path="designation"></form:errors>
                     </div>
                 </spring:bind>
-                <button id="addEmployee" class="btn btn-lg btn-primary" type="submit">Add Employee</button>
+                <div align="center">
+                    <button id="addEmployee" class="btn btn-lg btn-primary" type="submit">Add Employee</button>
+                </div>
             </form:form>
         </div>
     </body>

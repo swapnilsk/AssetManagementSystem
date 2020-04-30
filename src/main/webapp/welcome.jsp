@@ -2,11 +2,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-          <meta charset="utf-8">
-          <title>Create an account</title>
-          <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-          <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-
+        <meta charset="utf-8">
+        <title>Create an account</title>
+        <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
         <style>
             /* CSS for Square boxes */
             span {
@@ -21,21 +20,21 @@
 
 	<body>
         <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </form>
+            <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
         </c:if>
          <div class="container">
             <div class="row row-no-gutters" id="bottom-footer">
-                    <div align="left" class=" col-md-3">
-                        <input align="left" type="button" value="Home" onclick="location.href='/home'"/>
-                    </div>
-                    <div align="right" class="col-md-9">
-                        <h3>Hello ${pageContext.request.userPrincipal.name} |
-                            <a onclick="document.forms['logoutForm'].submit()"> Logout
-                            </a>
-                        </h3>
-                    </div>
+                <div align="left" class=" col-md-3">
+                    <input align="left" type="button" value="Home" onclick="location.href='/home'"/>
+                </div>
+                <div align="right" class="col-md-9">
+                    <h3>Hello ${pageContext.request.userPrincipal.name} |
+                        <a onclick="document.forms['logoutForm'].submit()"> Logout
+                        </a>
+                    </h3>
+                </div>
             </div>
 
             <div align="center">

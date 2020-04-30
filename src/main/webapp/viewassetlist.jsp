@@ -42,8 +42,9 @@
                     <h5>Employee Id:<span class="label label-default"></span></h5>
                     <input type="text" id="txtSearchEmployeeId" name='empID' class="form-control"></input>
                 </div>
-
-                <button type="submit" id="btnSearch" class="btn btn-lg btn-primary" >Search</button>
+                <div align="center">
+                    <button type="submit" id="btnSearch" class="btn btn-lg btn-primary" >Search</button>
+                </div>
                 <div id = "errorMsg"><caption><h2>${message}</h2></caption></div>
 
                <c:if test="${asset.size() > 0}">
